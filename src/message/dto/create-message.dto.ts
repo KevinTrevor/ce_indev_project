@@ -5,11 +5,6 @@ import { User } from 'src/user/entities/user.entity';
 
 export class CreateMessageDto {
   @ApiProperty({
-    type: Number,
-  })
-  id: number;
-
-  @ApiProperty({
     type: User,
     required: true,
   })

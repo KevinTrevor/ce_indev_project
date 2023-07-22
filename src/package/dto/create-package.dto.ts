@@ -4,11 +4,6 @@ import { Category } from 'src/enums/category.enum';
 export class CreatePackageDto {
   @ApiProperty({
     type: Number,
-  })
-  id: number;
-
-  @ApiProperty({
-    type: Number,
     required: true,
     minimum: 0.0,
     default: 150.0,

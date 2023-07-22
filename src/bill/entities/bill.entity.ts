@@ -2,12 +2,17 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Bill {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-  @Column()
+  @Column({
+    type: 'date',
+  })
   purchasedAt: Date;
 
-  @Column()
+  @Column({
+    type: 'double',
+    default: 0.0,
+  })
   totalPrice: number;
 }

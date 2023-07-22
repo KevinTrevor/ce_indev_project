@@ -2,11 +2,6 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateUserDto {
   @ApiProperty({
-    type: Number,
-  })
-  id: number;
-
-  @ApiProperty({
     type: String,
     minimum: 3,
   })

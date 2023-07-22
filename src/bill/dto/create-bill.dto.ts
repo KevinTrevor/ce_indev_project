@@ -2,11 +2,6 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateBillDto {
   @ApiProperty({
-    type: Number,
-  })
-  id: number;
-
-  @ApiProperty({
     type: Date,
     required: true,
   })
