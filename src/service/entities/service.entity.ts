@@ -1,20 +1,14 @@
+import { Product } from 'src/embedded/product.class';
 import { Category } from 'src/enums/category.enum';
-import { Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
+@Entity()
 export class Service {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({
-    type: 'double',
-    default: 0.0,
-  })
-  price: number;
-
-  @Column({
-    type: 'varchar',
-  })
-  name: string;
+  @Column(() => Product)
+  product: Product;
 
   @Column({
     type: 'enum',

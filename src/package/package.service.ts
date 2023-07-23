@@ -1,9 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { CreatePackageDto } from './dto/create-package.dto';
 import { UpdatePackageDto } from './dto/update-package.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Package } from './entities/package.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class PackageService {
+  constructor(
+    @InjectRepository(Package)
+    private packagesRepository: Repository<Package>,
+  ) {}
+
   create(createPackageDto: CreatePackageDto) {
     return 'This action adds a new package';
   }

@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Detail } from 'src/detail/entities/detail.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Bill {
@@ -15,4 +16,7 @@ export class Bill {
     default: 0.0,
   })
   totalPrice: number;
+
+  @OneToMany(() => Detail, (detail) => detail.bill)
+  details: Detail[];
 }

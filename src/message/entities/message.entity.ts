@@ -1,12 +1,16 @@
 import { Chat } from 'src/chat/entities/chat.entity';
 import { MessageStatus } from 'src/enums/status.enum';
-import { User } from 'src/user/entities/user.entity';
-import { Column, CreateDateColumn, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
+@Entity()
 export class Message {
   @PrimaryGeneratedColumn('uuid')
   id: string;
-  emissor: User;
 
   @CreateDateColumn()
   dateSent: Date;

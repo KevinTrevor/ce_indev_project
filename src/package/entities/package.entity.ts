@@ -1,24 +1,27 @@
-import { Category } from 'src/enums/category.enum';
-import { Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Product } from 'src/embedded/product.class';
+import { Service } from 'src/service/entities/service.entity';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
+@Entity()
 export class Package {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({
-    type: 'double',
-    default: 0.0,
-  })
-  price: number;
+  @Column(() => Product)
+  product: Product;
 
   @Column({
     type: 'varchar',
   })
-  name: string;
+  image: string;
 
-  @Column({
-    type: 'enum',
-    enum: Category,
-  })
-  categories: Category;
+  @ManyToMany(() => Service)
+  @JoinTable({ name: 'included_services' })
+  services: Service[];
 }

@@ -1,9 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { CreateDetailDto } from './dto/create-detail.dto';
 import { UpdateDetailDto } from './dto/update-detail.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Detail } from './entities/detail.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class DetailService {
+  constructor(
+    @InjectRepository(Detail)
+    private detailsRepository: Repository<Detail>,
+  ) {}
+
   create(createDetailDto: CreateDetailDto) {
     return 'This action adds a new detail';
   }

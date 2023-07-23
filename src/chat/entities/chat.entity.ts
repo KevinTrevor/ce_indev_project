@@ -1,5 +1,11 @@
-import { User } from 'src/user/entities/user.entity';
-import { CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from 'src/embedded/user.class';
+import {
+  CreateDateColumn,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Chat {
@@ -8,5 +14,8 @@ export class Chat {
 
   @CreateDateColumn()
   createdAt: Date;
+
+  @ManyToMany(() => User)
+  @JoinTable()
   users: User[];
 }
