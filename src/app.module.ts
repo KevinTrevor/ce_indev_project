@@ -5,7 +5,6 @@ import { AppService } from './app.service';
 import { BillModule } from './bill/bill.module';
 import { ChatModule } from './chat/chat.module';
 import { MessageModule } from './message/message.module';
-import { DetailModule } from './detail/detail.module';
 import { ServiceModule } from './service/service.module';
 import { PackageModule } from './package/package.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -14,6 +13,8 @@ import { DBConfig } from './config/db.config';
 import { DeveloperModule } from './developer/developer.module';
 import { RecruiterModule } from './recruiter/recruiter.module';
 import { CustomerModule } from './customer/customer.module';
+import { PackageDetailModule } from './package_detail/package_detail.module';
+import { ServiceDetailModule } from './service_detail/service_detail.module';
 
 @Module({
   imports: [
@@ -29,12 +30,13 @@ import { CustomerModule } from './customer/customer.module';
     BillModule,
     ChatModule,
     MessageModule,
-    DetailModule,
     ServiceModule,
     PackageModule,
     DeveloperModule,
     RecruiterModule,
     CustomerModule,
+    PackageDetailModule,
+    ServiceDetailModule,
   ],
   controllers: [AppController],
   providers: [AppService],

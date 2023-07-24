@@ -1,7 +1,14 @@
 import { Bill } from 'src/bill/entities/bill.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  TableInheritance,
+} from 'typeorm';
 
 @Entity()
+@TableInheritance({ column: { type: 'varchar', name: 'type' } })
 export class Detail {
   @PrimaryGeneratedColumn('uuid')
   id: string;

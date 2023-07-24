@@ -1,4 +1,4 @@
-import { Product } from 'src/embedded/product.class';
+import { Product } from 'src/parent_entity/product.entity';
 import { Service } from 'src/service/entities/service.entity';
 import {
   Column,

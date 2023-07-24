@@ -1,10 +1,12 @@
 import { Bill } from 'src/bill/entities/bill.entity';
 import { Chat } from 'src/chat/entities/chat.entity';
-import { Detail } from 'src/detail/entities/detail.entity';
-import { User } from 'src/embedded/user.class';
+import { Detail } from 'src/parent_entity/detail.entity';
+import { User } from 'src/parent_entity/user.entity';
 import { Message } from 'src/message/entities/message.entity';
 import { Package } from 'src/package/entities/package.entity';
 import { Service } from 'src/service/entities/service.entity';
+import { ServiceDetail } from 'src/service_detail/entities/service_detail.entity';
+import { PackageDetail } from 'src/package_detail/entities/package_detail.entity';
 
 export default async () => ({
   indev_db: {
@@ -18,6 +20,8 @@ export default async () => ({
       Bill,
       Chat,
       Detail,
+      ServiceDetail,
+      PackageDetail,
       Message,
       Package,
       Service,

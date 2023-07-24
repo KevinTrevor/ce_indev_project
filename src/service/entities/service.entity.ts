@@ -1,4 +1,4 @@
-import { Product } from 'src/embedded/product.class';
+import { Product } from 'src/parent_entity/product.entity';
 import { Category } from 'src/enums/category.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 

@@ -1,4 +1,4 @@
-import { Detail } from 'src/detail/entities/detail.entity';
+import { Detail } from 'src/parent_entity/detail.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

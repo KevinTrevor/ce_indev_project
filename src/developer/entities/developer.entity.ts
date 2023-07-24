@@ -1,4 +1,4 @@
-import { User } from 'src/embedded/user.class';
+import { User } from 'src/parent_entity/user.entity';
 import { Category } from 'src/enums/category.enum';
 import { ChildEntity, Column } from 'typeorm';
 

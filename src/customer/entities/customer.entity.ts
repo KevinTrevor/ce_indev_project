@@ -1,4 +1,4 @@
-import { User } from 'src/embedded/user.class';
+import { User } from 'src/parent_entity/user.entity';
 import { Package } from 'src/package/entities/package.entity';
 import { Service } from 'src/service/entities/service.entity';
 import { ChildEntity, JoinTable, ManyToMany } from 'typeorm';

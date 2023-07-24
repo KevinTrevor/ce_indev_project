@@ -1,5 +1,7 @@
-import { Column } from 'typeorm';
+import { Column, Entity, TableInheritance } from 'typeorm';
 
+@Entity()
+@TableInheritance({ column: { type: 'varchar', name: 'type' } })
 export class Product {
   @Column({
     type: 'double',
