@@ -2,33 +2,35 @@ import { Injectable } from '@nestjs/common';
 import { CreateDeveloperDto } from './dto/create-developer.dto';
 import { UpdateDeveloperDto } from './dto/update-developer.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Developer } from './entities/developer.entity';
 import { Repository } from 'typeorm';
+import { User } from 'src/parent_entity/user.entity';
+import { Developer } from './entities/developer.entity';
 
 @Injectable()
 export class DeveloperService {
   constructor(
-    @InjectRepository(Developer)
-    private developersRepository: Repository<Developer>,
+    @InjectRepository(User)
+    private usersRepository: Repository<Developer>,
   ) {}
 
-  create(createDeveloperDto: CreateDeveloperDto) {
-    return 'This action adds a new developer';
+  async create(createDeveloperDto: CreateDeveloperDto) {
+    const developer = this.usersRepository.create(createDeveloperDto);
+    return await this.usersRepository.save(developer);
   }
 
-  findAll() {
-    return `This action returns all developer`;
+  async findAll() {
+    return await this.usersRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} developer`;
+  async findOne(id: string) {
+    return await this.usersRepository.findOneBy({ id: id });
   }
 
-  update(id: number, updateDeveloperDto: UpdateDeveloperDto) {
-    return `This action updates a #${id} developer`;
+  async update(id: string, updateDeveloperDto: UpdateDeveloperDto) {
+    return await this.usersRepository.update(id, updateDeveloperDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} developer`;
+  async remove(id: string) {
+    return await this.usersRepository.delete(id);
   }
 }

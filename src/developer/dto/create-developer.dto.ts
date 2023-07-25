@@ -1,4 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Category } from 'src/enums/category.enum';
+import { Experience } from 'src/enums/experience.enum';
 
 export class CreateDeveloperDto {
   @ApiProperty({
@@ -15,7 +17,7 @@ export class CreateDeveloperDto {
 
   @ApiProperty({
     type: String,
-    minimum: 8,
+    minimum: 3,
     required: true,
   })
   username: string;
@@ -35,8 +37,12 @@ export class CreateDeveloperDto {
   })
   email: string;
 
-  @ApiProperty({
-    type: Date,
-  })
-  createdAt: Date;
+  @ApiProperty()
+  type: string;
+
+  @ApiProperty()
+  category: Category;
+
+  @ApiProperty()
+  experience: Experience;
 }
