@@ -34,16 +34,16 @@ export class PackageController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.packageService.findOne(+id);
+    return this.packageService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePackageDto: UpdatePackageDto) {
-    return this.packageService.update(+id, updatePackageDto);
+    return this.packageService.update(id, updatePackageDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.packageService.remove(+id);
+    return this.packageService.remove(id);
   }
 }

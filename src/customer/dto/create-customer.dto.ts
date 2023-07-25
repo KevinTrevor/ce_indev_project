@@ -1,4 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Package } from 'src/package/entities/package.entity';
+import { Service } from 'src/service/entities/service.entity';
 
 export class CreateCustomerDto {
   @ApiProperty({
@@ -39,4 +41,14 @@ export class CreateCustomerDto {
     type: Date,
   })
   createdAt: Date;
+
+  @ApiProperty({
+    type: Array<Package>,
+  })
+  packages: Package[];
+
+  @ApiProperty({
+    type: Array<Service>,
+  })
+  services: Service[];
 }

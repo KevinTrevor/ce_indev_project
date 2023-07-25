@@ -4,31 +4,33 @@ import { UpdateServiceDetailDto } from './dto/update-service_detail.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ServiceDetail } from './entities/service_detail.entity';
 import { Repository } from 'typeorm';
+import { Detail } from 'src/parent_entity/detail.entity';
 
 @Injectable()
 export class ServiceDetailService {
   constructor(
-    @InjectRepository(ServiceDetail)
-    private servicesDetailsRepository: Repository<ServiceDetail>,
+    @InjectRepository(Detail)
+    private detailsRepository: Repository<ServiceDetail>,
   ) {}
 
-  create(createServiceDetailDto: CreateServiceDetailDto) {
-    return 'This action adds a new serviceDetail';
+  async create(createServiceDetailDto: CreateServiceDetailDto) {
+    const serviceDetail = this.detailsRepository.create(createServiceDetailDto);
+    return await this.detailsRepository.save(serviceDetail);
   }
 
-  findAll() {
-    return `This action returns all serviceDetail`;
+  async findAll() {
+    return await this.detailsRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} serviceDetail`;
+  async findOne(id: string) {
+    return await this.detailsRepository.findOneBy({ id: id });
   }
 
-  update(id: number, updateServiceDetailDto: UpdateServiceDetailDto) {
-    return `This action updates a #${id} serviceDetail`;
+  async update(id: string, updateServiceDetailDto: UpdateServiceDetailDto) {
+    return await this.detailsRepository.update(id, updateServiceDetailDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} serviceDetail`;
+  async remove(id: string) {
+    return await this.detailsRepository.delete({ id: id });
   }
 }

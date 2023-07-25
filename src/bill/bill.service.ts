@@ -12,23 +12,24 @@ export class BillService {
     private billsRepository: Repository<Bill>,
   ) {}
 
-  create(createBillDto: CreateBillDto) {
-    return 'This action adds a new bill';
+  async create(createBillDto: CreateBillDto) {
+    const bill = this.billsRepository.create(createBillDto);
+    return await this.billsRepository.save(bill);
   }
 
-  findAll() {
-    return `This action returns all bill`;
+  async findAll() {
+    return await this.billsRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} bill`;
+  async findOne(id: string) {
+    return await this.billsRepository.findOneBy({ id: id });
   }
 
-  update(id: number, updateBillDto: UpdateBillDto) {
-    return `This action updates a #${id} bill`;
+  async update(id: string, updateBillDto: UpdateBillDto) {
+    return await this.billsRepository.update(id, updateBillDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} bill`;
+  async remove(id: string) {
+    return await this.billsRepository.delete({ id: id });
   }
 }

@@ -1,21 +1,9 @@
 import { Product } from 'src/parent_entity/product.entity';
 import { Service } from 'src/service/entities/service.entity';
-import {
-  Column,
-  Entity,
-  JoinTable,
-  ManyToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, JoinTable, ManyToMany } from 'typeorm';
 
 @Entity()
-export class Package {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
-  @Column(() => Product)
-  product: Product;
-
+export class Package extends Product {
   @Column({
     type: 'varchar',
   })

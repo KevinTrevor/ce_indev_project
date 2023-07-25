@@ -12,23 +12,24 @@ export class ChatService {
     private chatsRepository: Repository<Chat>,
   ) {}
 
-  create(createChatDto: CreateChatDto) {
-    return 'This action adds a new chat';
+  async create(createChatDto: CreateChatDto) {
+    const chat = this.chatsRepository.create(createChatDto);
+    return await this.chatsRepository.save(chat);
   }
 
-  findAll() {
-    return `This action returns all chat`;
+  async findAll() {
+    return await this.chatsRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} chat`;
+  async findOne(id: string) {
+    return await this.chatsRepository.findOneBy({ id: id });
   }
 
-  update(id: number, updateChatDto: UpdateChatDto) {
-    return `This action updates a #${id} chat`;
+  async update(id: string, updateChatDto: UpdateChatDto) {
+    return await this.chatsRepository.update(id, updateChatDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} chat`;
+  async remove(id: string) {
+    return await this.chatsRepository.delete({ id: id });
   }
 }

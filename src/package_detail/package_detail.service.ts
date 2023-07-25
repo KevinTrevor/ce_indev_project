@@ -4,31 +4,33 @@ import { UpdatePackageDetailDto } from './dto/update-package_detail.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PackageDetail } from './entities/package_detail.entity';
 import { Repository } from 'typeorm';
+import { Detail } from 'src/parent_entity/detail.entity';
 
 @Injectable()
 export class PackageDetailService {
   constructor(
-    @InjectRepository(PackageDetail)
-    private packageDetailsRepository: Repository<PackageDetail>,
+    @InjectRepository(Detail)
+    private detailsRepository: Repository<PackageDetail>,
   ) {}
 
-  create(createPackageDetailDto: CreatePackageDetailDto) {
-    return 'This action adds a new packageDetail';
+  async create(createPackageDetailDto: CreatePackageDetailDto) {
+    const packageDetail = this.detailsRepository.create(createPackageDetailDto);
+    return await this.detailsRepository.save(packageDetail);
   }
 
-  findAll() {
-    return `This action returns all packageDetail`;
+  async findAll() {
+    return await this.detailsRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} packageDetail`;
+  async findOne(id: string) {
+    return await this.detailsRepository.findOneBy({ id: id });
   }
 
-  update(id: number, updatePackageDetailDto: UpdatePackageDetailDto) {
-    return `This action updates a #${id} packageDetail`;
+  async update(id: string, updatePackageDetailDto: UpdatePackageDetailDto) {
+    return await this.detailsRepository.update(id, updatePackageDetailDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} packageDetail`;
+  async remove(id: string) {
+    return await this.detailsRepository.delete({ id: id });
   }
 }

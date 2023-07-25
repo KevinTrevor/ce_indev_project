@@ -15,6 +15,7 @@ import { RecruiterModule } from './recruiter/recruiter.module';
 import { CustomerModule } from './customer/customer.module';
 import { PackageDetailModule } from './package_detail/package_detail.module';
 import { ServiceDetailModule } from './service_detail/service_detail.module';
+import { ProgrammingLanguageModule } from './programming_language/programming_language.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { ServiceDetailModule } from './service_detail/service_detail.module';
     CustomerModule,
     PackageDetailModule,
     ServiceDetailModule,
+    ProgrammingLanguageModule,
   ],
   controllers: [AppController],
   providers: [AppService],

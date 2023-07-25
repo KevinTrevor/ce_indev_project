@@ -4,31 +4,33 @@ import { UpdatePackageDto } from './dto/update-package.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Package } from './entities/package.entity';
 import { Repository } from 'typeorm';
+import { Product } from 'src/parent_entity/product.entity';
 
 @Injectable()
 export class PackageService {
   constructor(
-    @InjectRepository(Package)
-    private packagesRepository: Repository<Package>,
+    @InjectRepository(Product)
+    private productsRepository: Repository<Package>,
   ) {}
 
-  create(createPackageDto: CreatePackageDto) {
-    return 'This action adds a new package';
+  async create(createPackageDto: CreatePackageDto) {
+    const pack = this.productsRepository.create(createPackageDto);
+    return await this.productsRepository.save(pack);
   }
 
-  findAll() {
-    return `This action returns all package`;
+  async findAll() {
+    return await this.productsRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} package`;
+  async findOne(id: string) {
+    return await this.productsRepository.findOneBy({ id: id });
   }
 
-  update(id: number, updatePackageDto: UpdatePackageDto) {
-    return `This action updates a #${id} package`;
+  async update(id: string, updatePackageDto: UpdatePackageDto) {
+    return await this.productsRepository.update(id, updatePackageDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} package`;
+  async remove(id: string) {
+    return await this.productsRepository.delete({ id: id });
   }
 }

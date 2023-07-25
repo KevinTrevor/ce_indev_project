@@ -12,23 +12,24 @@ export class MessageService {
     private messagesRepository: Repository<Message>,
   ) {}
 
-  create(createMessageDto: CreateMessageDto) {
-    return 'This action adds a new message';
+  async create(createMessageDto: CreateMessageDto) {
+    const message = this.messagesRepository.create(createMessageDto);
+    return await this.messagesRepository.save(message);
   }
 
-  findAll() {
-    return `This action returns all message`;
+  async findAll() {
+    return await this.messagesRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} message`;
+  async findOne(id: string) {
+    return await this.messagesRepository.findOneBy({ id: id });
   }
 
-  update(id: number, updateMessageDto: UpdateMessageDto) {
-    return `This action updates a #${id} message`;
+  async update(id: string, updateMessageDto: UpdateMessageDto) {
+    return await this.messagesRepository.update(id, updateMessageDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} message`;
+  async remove(id: string) {
+    return await this.messagesRepository.delete({ id: id });
   }
 }

@@ -1,7 +1,8 @@
 import { User } from 'src/parent_entity/user.entity';
 import { Category } from 'src/enums/category.enum';
-import { ChildEntity, Column } from 'typeorm';
+import { ChildEntity, Column, JoinTable, ManyToMany } from 'typeorm';
 import { Experience } from 'src/enums/experience.enum';
+import { ProgrammingLanguage } from 'src/programming_language/entities/programming_language.entity';
 
 @ChildEntity()
 export class Developer extends User {
@@ -18,4 +19,13 @@ export class Developer extends User {
     default: Experience.Junior,
   })
   experience: Experience;
+
+  @Column({
+    type: 'varchar',
+  })
+  description: string;
+
+  @ManyToMany(() => ProgrammingLanguage)
+  @JoinTable()
+  programmingLanguages: ProgrammingLanguage[];
 }

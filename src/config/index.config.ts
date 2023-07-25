@@ -7,6 +7,8 @@ import { Package } from 'src/package/entities/package.entity';
 import { Service } from 'src/service/entities/service.entity';
 import { ServiceDetail } from 'src/service_detail/entities/service_detail.entity';
 import { PackageDetail } from 'src/package_detail/entities/package_detail.entity';
+import { Developer } from 'src/developer/entities/developer.entity';
+import { ProgrammingLanguage } from 'src/programming_language/entities/programming_language.entity';
 
 export default async () => ({
   indev_db: {
@@ -25,7 +27,9 @@ export default async () => ({
       Message,
       Package,
       Service,
+      ProgrammingLanguage,
       User,
+      Developer,
     ],
     synchronize: true,
   },

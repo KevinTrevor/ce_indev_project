@@ -1,5 +1,11 @@
 export enum Experience {
-    Junior,
-    Semisenior,
-    Senior,
-  }
+  Junior,
+  Semisenior,
+  Senior,
+}
+
+export enum LanguageExperience {
+  Begginer,
+  Intermediate,
+  Advanced,
+}

@@ -36,6 +36,11 @@ export class User {
   @Column({
     type: 'varchar',
   })
+  image: string;
+
+  @Column({
+    type: 'varchar',
+  })
   email: string;
 
   @CreateDateColumn()

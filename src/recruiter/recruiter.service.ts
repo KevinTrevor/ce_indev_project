@@ -4,31 +4,33 @@ import { UpdateRecruiterDto } from './dto/update-recruiter.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Recruiter } from './entities/recruiter.entity';
 import { Repository } from 'typeorm';
+import { User } from 'src/parent_entity/user.entity';
 
 @Injectable()
 export class RecruiterService {
   constructor(
-    @InjectRepository(Recruiter)
-    private recruitersRepository: Repository<Recruiter>,
+    @InjectRepository(User)
+    private usersRepository: Repository<Recruiter>,
   ) {}
 
-  create(createRecruiterDto: CreateRecruiterDto) {
-    return 'This action adds a new recruiter';
+  async create(createRecruiterDto: CreateRecruiterDto) {
+    const recruiter = this.usersRepository.create(createRecruiterDto);
+    return await this.usersRepository.save(recruiter);
   }
 
-  findAll() {
-    return `This action returns all recruiter`;
+  async findAll() {
+    return await this.usersRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} recruiter`;
+  async findOne(id: string) {
+    return await this.usersRepository.findOneBy({ id: id });
   }
 
-  update(id: number, updateRecruiterDto: UpdateRecruiterDto) {
-    return `This action updates a #${id} recruiter`;
+  update(id: string, updateRecruiterDto: UpdateRecruiterDto) {
+    return this.usersRepository.update(id, updateRecruiterDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} recruiter`;
+  remove(id: string) {
+    return this.usersRepository.delete({ id: id });
   }
 }

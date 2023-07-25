@@ -4,6 +4,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -29,5 +30,7 @@ export class Message {
     type: 'longtext',
   })
   content: string;
+
+  @ManyToOne(() => Chat, (chat) => chat.messages)
   chat: Chat;
 }

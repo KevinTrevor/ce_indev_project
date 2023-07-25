@@ -38,9 +38,6 @@ export class CreateDeveloperDto {
   email: string;
 
   @ApiProperty()
-  type: string;
-
-  @ApiProperty()
   category: Category;
 
   @ApiProperty()

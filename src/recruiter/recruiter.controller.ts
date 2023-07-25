@@ -1,8 +1,18 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { RecruiterService } from './recruiter.service';
 import { CreateRecruiterDto } from './dto/create-recruiter.dto';
 import { UpdateRecruiterDto } from './dto/update-recruiter.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('users')
 @Controller('recruiter')
 export class RecruiterController {
   constructor(private readonly recruiterService: RecruiterService) {}
@@ -19,16 +29,19 @@ export class RecruiterController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.recruiterService.findOne(+id);
+    return this.recruiterService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateRecruiterDto: UpdateRecruiterDto) {
-    return this.recruiterService.update(+id, updateRecruiterDto);
+  update(
+    @Param('id') id: string,
+    @Body() updateRecruiterDto: UpdateRecruiterDto,
+  ) {
+    return this.recruiterService.update(id, updateRecruiterDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.recruiterService.remove(+id);
+    return this.recruiterService.remove(id);
   }
 }

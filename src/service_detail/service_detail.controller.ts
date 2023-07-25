@@ -1,8 +1,18 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { ServiceDetailService } from './service_detail.service';
 import { CreateServiceDetailDto } from './dto/create-service_detail.dto';
 import { UpdateServiceDetailDto } from './dto/update-service_detail.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('details')
 @Controller('service-detail')
 export class ServiceDetailController {
   constructor(private readonly serviceDetailService: ServiceDetailService) {}
@@ -19,16 +29,19 @@ export class ServiceDetailController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.serviceDetailService.findOne(+id);
+    return this.serviceDetailService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateServiceDetailDto: UpdateServiceDetailDto) {
-    return this.serviceDetailService.update(+id, updateServiceDetailDto);
+  update(
+    @Param('id') id: string,
+    @Body() updateServiceDetailDto: UpdateServiceDetailDto,
+  ) {
+    return this.serviceDetailService.update(id, updateServiceDetailDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.serviceDetailService.remove(+id);
+    return this.serviceDetailService.remove(id);
   }
 }
