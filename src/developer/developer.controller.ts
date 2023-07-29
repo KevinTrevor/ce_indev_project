@@ -1,6 +1,7 @@
 import {
   Controller,
   Get,
+  Query,
   Post,
   Body,
   Patch,
@@ -21,15 +22,20 @@ export class DeveloperController {
   create(@Body() createDeveloperDto: CreateDeveloperDto) {
     return this.developerService.create(createDeveloperDto);
   }
-
+  /*
   @Get()
   findAll() {
     return this.developerService.findAll();
   }
-
+  */
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.developerService.findOne(id);
+  }
+
+  @Get()
+  findWithFilters(@Query() queryParams) {
+    return this.developerService.findWithFilters(queryParams);
   }
 
   @Patch(':id')

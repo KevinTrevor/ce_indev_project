@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Category } from 'src/enums/category.enum';
 import { Experience } from 'src/enums/experience.enum';
+import { ProgrammingLanguage } from 'src/programming_language/entities/programming_language.entity';
 
 export class CreateDeveloperDto {
   @ApiProperty({
@@ -37,9 +38,19 @@ export class CreateDeveloperDto {
   })
   email: string;
 
+  @ApiProperty({
+    type: String,
+  })
+  image: string;
+
   @ApiProperty()
   category: Category;
 
   @ApiProperty()
   experience: Experience;
+
+  @ApiProperty({
+    type: Array<ProgrammingLanguage>,
+  })
+  programmingLanguages: ProgrammingLanguage[];
 }

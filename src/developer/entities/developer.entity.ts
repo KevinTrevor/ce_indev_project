@@ -26,6 +26,6 @@ export class Developer extends User {
   description: string;
 
   @ManyToMany(() => ProgrammingLanguage)
-  @JoinTable()
+  @JoinTable({ name: 'developer_knowledge' })
   programmingLanguages: ProgrammingLanguage[];
 }
