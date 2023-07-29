@@ -38,9 +38,9 @@ export class CreateCustomerDto {
   email: string;
 
   @ApiProperty({
-    type: Date,
+    type: String,
   })
-  createdAt: Date;
+  image: string;
 
   @ApiProperty({
     type: Array<Package>,

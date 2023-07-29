@@ -30,13 +30,19 @@ export class CreateRecruiterDto {
 
   @ApiProperty({
     type: String,
+  })
+  image: string;
+
+  @ApiProperty({
+    type: String,
     minimum: 8,
     required: true,
   })
   email: string;
 
   @ApiProperty({
-    type: Date,
+    type: Boolean,
+    default: false,
   })
-  createdAt: Date;
+  isAdmin: boolean;
 }

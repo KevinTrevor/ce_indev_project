@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { RecruiterService } from './recruiter.service';
 import { RecruiterController } from './recruiter.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from 'src/parent_entity/user.entity';
+import { Recruiter } from './entities/recruiter.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User])],
+  imports: [TypeOrmModule.forFeature([Recruiter])],
   controllers: [RecruiterController],
   providers: [RecruiterService],
 })

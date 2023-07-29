@@ -4,12 +4,11 @@ import { UpdateRecruiterDto } from './dto/update-recruiter.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Recruiter } from './entities/recruiter.entity';
 import { Repository } from 'typeorm';
-import { User } from 'src/parent_entity/user.entity';
 
 @Injectable()
 export class RecruiterService {
   constructor(
-    @InjectRepository(User)
+    @InjectRepository(Recruiter)
     private usersRepository: Repository<Recruiter>,
   ) {}
 

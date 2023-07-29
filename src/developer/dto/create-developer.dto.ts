@@ -6,18 +6,21 @@ import { ProgrammingLanguage } from 'src/programming_language/entities/programmi
 export class CreateDeveloperDto {
   @ApiProperty({
     type: String,
+    default: '',
     minimum: 3,
   })
   name: string;
 
   @ApiProperty({
     type: String,
+    default: '',
     minimum: 3,
   })
   lastname: string;
 
   @ApiProperty({
     type: String,
+    default: '',
     minimum: 3,
     required: true,
   })
@@ -25,6 +28,7 @@ export class CreateDeveloperDto {
 
   @ApiProperty({
     type: String,
+    default: '',
     minimum: 8,
     maximum: 16,
     required: true,
@@ -34,14 +38,26 @@ export class CreateDeveloperDto {
   @ApiProperty({
     type: String,
     minimum: 8,
+    default: 'someone@example.com',
     required: true,
   })
   email: string;
 
   @ApiProperty({
     type: String,
+    default:
+      'https://cdn.vectorstock.com/i/preview-1x/32/12/default-avatar-profile-icon-vector-39013212.jpg',
   })
   image: string;
+
+  @ApiProperty({
+    type: String,
+    minLength: 20,
+    maxLength: 350,
+    default:
+      'Por favor, escribe una pequeña descripción de ti como profesional.',
+  })
+  description: string;
 
   @ApiProperty()
   category: Category;
@@ -51,6 +67,7 @@ export class CreateDeveloperDto {
 
   @ApiProperty({
     type: Array<ProgrammingLanguage>,
+    default: [{ name: '' }],
   })
   programmingLanguages: ProgrammingLanguage[];
 }

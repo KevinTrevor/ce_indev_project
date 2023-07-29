@@ -7,6 +7,12 @@ import { ProgrammingLanguage } from 'src/programming_language/entities/programmi
 @ChildEntity()
 export class Developer extends User {
   @Column({
+    type: 'varchar',
+    length: 350,
+  })
+  description: string;
+
+  @Column({
     type: 'enum',
     enum: Category,
     default: Category.ComputerSecurity,
@@ -19,11 +25,6 @@ export class Developer extends User {
     default: Experience.Junior,
   })
   experience: Experience;
-
-  @Column({
-    type: 'varchar',
-  })
-  description: string;
 
   @ManyToMany(() => ProgrammingLanguage)
   @JoinTable({ name: 'developer_knowledge' })

@@ -3,13 +3,12 @@ import { CreateDeveloperDto } from './dto/create-developer.dto';
 import { UpdateDeveloperDto } from './dto/update-developer.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FindManyOptions, FindOneOptions, Repository } from 'typeorm';
-import { User } from 'src/parent_entity/user.entity';
 import { Developer } from './entities/developer.entity';
 
 @Injectable()
 export class DeveloperService {
   constructor(
-    @InjectRepository(User)
+    @InjectRepository(Developer)
     private usersRepository: Repository<Developer>,
   ) {}
 
@@ -19,7 +18,7 @@ export class DeveloperService {
   }
 
   async findWithFilters(queryParams) {
-    const findOptions: FindManyOptions<Developer> = {};
+    const findOptions: FindManyOptions = {};
 
     if (queryParams.category) {
       findOptions.where = {
@@ -41,12 +40,14 @@ export class DeveloperService {
         programmingLanguages: { name: queryParams.programmingLanguage },
       };
     }
+
     return await this.usersRepository.find(findOptions);
   }
 
   async findOne(id: string) {
     const findOptions: FindOneOptions<Developer> = {
       where: { id: id },
+      select: { password: false },
       relations: {
         programmingLanguages: true,
       },
