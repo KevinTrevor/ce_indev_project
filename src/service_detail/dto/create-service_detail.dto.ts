@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Bill } from 'src/bill/entities/bill.entity';
 import { Service } from 'src/service/entities/service.entity';
 
 export class CreateServiceDetailDto {
@@ -12,4 +13,11 @@ export class CreateServiceDetailDto {
     type: Array<Service>,
   })
   services: Service[];
+
+  @ApiProperty({
+    type: Bill,
+    default: { id: '' },
+    required: true,
+  })
+  bill: Bill;
 }
