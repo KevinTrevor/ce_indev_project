@@ -60,7 +60,9 @@ export class CreateDeveloperDto {
   })
   description: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    default: Experience.Junior,
+  })
   experience: Experience;
 
   @ApiProperty({
