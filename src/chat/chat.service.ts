@@ -3,7 +3,7 @@ import { CreateChatDto } from './dto/create-chat.dto';
 import { UpdateChatDto } from './dto/update-chat.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Chat } from './entities/chat.entity';
-import { Repository } from 'typeorm';
+import { FindOneOptions, Repository } from 'typeorm';
 
 @Injectable()
 export class ChatService {
@@ -22,7 +22,11 @@ export class ChatService {
   }
 
   async findOne(id: string) {
-    return await this.chatsRepository.findOneBy({ id: id });
+    const findOptions: FindOneOptions<Chat> = {
+      where: { id: id },
+      relations: { messages: true },
+    };
+    return await this.chatsRepository.findOne(findOptions);
   }
 
   async update(id: string, updateChatDto: UpdateChatDto) {

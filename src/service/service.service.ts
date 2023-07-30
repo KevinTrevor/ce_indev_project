@@ -3,13 +3,12 @@ import { CreateServiceDto } from './dto/create-service.dto';
 import { UpdateServiceDto } from './dto/update-service.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Service } from './entities/service.entity';
-import { Repository } from 'typeorm';
-import { Product } from 'src/parent_entity/product.entity';
+import { FindOneOptions, Repository } from 'typeorm';
 
 @Injectable()
 export class ServiceService {
   constructor(
-    @InjectRepository(Product)
+    @InjectRepository(Service)
     private productsRepository: Repository<Service>,
   ) {}
 
@@ -23,7 +22,11 @@ export class ServiceService {
   }
 
   async findOne(id: string) {
-    return await this.productsRepository.findOneBy({ id: id });
+    const findOptions: FindOneOptions<Service> = {
+      where: { id: id },
+      relations: { categories: true },
+    };
+    return await this.productsRepository.findOne(findOptions);
   }
 
   async update(id: string, updateServiceDto: UpdateServiceDto) {

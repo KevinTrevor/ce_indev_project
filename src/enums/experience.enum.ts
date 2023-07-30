@@ -1,7 +1,7 @@
 export enum Experience {
-  Junior,
-  Semisenior,
-  Senior,
+  Junior = 'Junior',
+  Semisenior = 'Semisenior',
+  Senior = 'Senior',
 }
 
 export enum LanguageExperience {

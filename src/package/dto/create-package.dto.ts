@@ -1,5 +1,4 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Category } from 'src/enums/category.enum';
 
 export class CreatePackageDto {
   @ApiProperty({
@@ -16,9 +15,4 @@ export class CreatePackageDto {
     default: 'Nombre de servicio',
   })
   name: string;
-
-  @ApiProperty({
-    enum: Category,
-  })
-  categories: Category;
 }

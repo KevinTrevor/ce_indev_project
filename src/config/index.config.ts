@@ -11,6 +11,8 @@ import { Developer } from 'src/developer/entities/developer.entity';
 import { ProgrammingLanguage } from 'src/programming_language/entities/programming_language.entity';
 import { Customer } from 'src/customer/entities/customer.entity';
 import { Recruiter } from 'src/recruiter/entities/recruiter.entity';
+import { Category } from 'src/category/entities/category.entity';
+import { Institution } from 'src/institution/entities/institution.entity';
 
 export default async () => ({
   indev_db: {
@@ -30,6 +32,8 @@ export default async () => ({
       Package,
       Service,
       ProgrammingLanguage,
+      Category,
+      Institution,
       User,
       Developer,
       Customer,

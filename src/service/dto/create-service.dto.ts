@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Category } from 'src/enums/category.enum';
+import { Category } from 'src/category/entities/category.entity';
 
 export class CreateServiceDto {
   @ApiProperty({
@@ -18,7 +18,8 @@ export class CreateServiceDto {
   name: string;
 
   @ApiProperty({
-    enum: Category,
+    type: Array<Category>,
+    default: [{ name: '' }],
   })
-  categories: Category;
+  categories: Category[];
 }

@@ -23,7 +23,7 @@ export class DeveloperService {
     if (queryParams.category) {
       findOptions.where = {
         ...findOptions.where,
-        category: queryParams.category,
+        category: { name: queryParams.category },
       };
     }
 
@@ -47,9 +47,10 @@ export class DeveloperService {
   async findOne(id: string) {
     const findOptions: FindOneOptions<Developer> = {
       where: { id: id },
-      select: { password: false },
       relations: {
         programmingLanguages: true,
+        studies: true,
+        categories: true,
       },
     };
     return await this.usersRepository.findOne(findOptions);

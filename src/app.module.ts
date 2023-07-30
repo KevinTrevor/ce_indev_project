@@ -16,6 +16,8 @@ import { CustomerModule } from './customer/customer.module';
 import { PackageDetailModule } from './package_detail/package_detail.module';
 import { ServiceDetailModule } from './service_detail/service_detail.module';
 import { ProgrammingLanguageModule } from './programming_language/programming_language.module';
+import { CategoryModule } from './category/category.module';
+import { InstitutionModule } from './institution/institution.module';
 
 @Module({
   imports: [
@@ -39,6 +41,8 @@ import { ProgrammingLanguageModule } from './programming_language/programming_la
     PackageDetailModule,
     ServiceDetailModule,
     ProgrammingLanguageModule,
+    CategoryModule,
+    InstitutionModule,
   ],
   controllers: [AppController],
   providers: [AppService],

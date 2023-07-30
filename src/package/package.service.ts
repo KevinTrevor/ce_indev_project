@@ -3,13 +3,12 @@ import { CreatePackageDto } from './dto/create-package.dto';
 import { UpdatePackageDto } from './dto/update-package.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Package } from './entities/package.entity';
-import { Repository } from 'typeorm';
-import { Product } from 'src/parent_entity/product.entity';
+import { FindOneOptions, Repository } from 'typeorm';
 
 @Injectable()
 export class PackageService {
   constructor(
-    @InjectRepository(Product)
+    @InjectRepository(Package)
     private productsRepository: Repository<Package>,
   ) {}
 
@@ -23,7 +22,11 @@ export class PackageService {
   }
 
   async findOne(id: string) {
-    return await this.productsRepository.findOneBy({ id: id });
+    const findOptions: FindOneOptions<Package> = {
+      where: { id: id },
+      relations: { services: true },
+    };
+    return await this.productsRepository.findOne(findOptions);
   }
 
   async update(id: string, updatePackageDto: UpdatePackageDto) {

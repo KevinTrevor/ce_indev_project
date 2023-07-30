@@ -19,6 +19,8 @@ async function bootstrap() {
     .addTag('services')
     .addTag('packages')
     .addTag('programming_languages')
+    .addTag('institutions')
+    .addTag('categories')
     .build();
   const document = SwaggerModule.createDocument(app, config);
 

@@ -1,12 +1,10 @@
+import { Category } from 'src/category/entities/category.entity';
 import { Product } from 'src/parent_entity/product.entity';
-import { Category } from 'src/enums/category.enum';
-import { Column, Entity } from 'typeorm';
+import { Entity, JoinTable, ManyToMany } from 'typeorm';
 
 @Entity()
 export class Service extends Product {
-  @Column({
-    type: 'enum',
-    enum: Category,
-  })
-  categories: Category;
+  @ManyToMany(() => Category)
+  @JoinTable({ name: 'service_categories' })
+  categories: Category[];
 }
