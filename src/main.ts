@@ -11,7 +11,9 @@ async function bootstrap() {
       'In.dev es un sitio de contratación de servicio de programadores a nivel regional.',
     )
     .setVersion('0.1')
-    .addTag('users')
+    .addTag('customers')
+    .addTag('developers')
+    .addTag('recruiters')
     .addTag('bills')
     .addTag('chats')
     .addTag('messages')
