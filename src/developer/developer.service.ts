@@ -18,7 +18,13 @@ export class DeveloperService {
   }
 
   async findWithFilters(queryParams) {
-    const findOptions: FindManyOptions = {};
+    const findOptions: FindManyOptions = {
+      relations: {
+        programmingLanguages: true,
+        studies: true,
+        categories: true,
+      },
+    };
 
     if (queryParams.category) {
       findOptions.where = {
