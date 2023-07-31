@@ -19,7 +19,7 @@ export class CreateServiceDto {
 
   @ApiProperty({
     type: Array<Category>,
-    default: [{ name: '' }],
+    default: [{ id: '' }],
   })
   categories: Category[];
 }

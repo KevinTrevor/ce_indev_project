@@ -11,6 +11,7 @@ export class CreatePackageDetailDto {
 
   @ApiProperty({
     type: Array<Package>,
+    default: [{ id: '' }],
   })
   packages: Package[];
 

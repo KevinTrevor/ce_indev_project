@@ -9,6 +9,7 @@ export class CreateChatDto {
 
   @ApiProperty({
     type: Array<User>,
+    default: [{ id: '' }],
   })
   users: User[];
 }

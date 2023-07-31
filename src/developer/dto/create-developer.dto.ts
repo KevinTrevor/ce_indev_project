@@ -67,19 +67,19 @@ export class CreateDeveloperDto {
 
   @ApiProperty({
     type: Array<ProgrammingLanguage>,
-    default: [{ name: '' }],
+    default: [{ id: '' }],
   })
   programmingLanguages: ProgrammingLanguage[];
 
   @ApiProperty({
     type: Array<Category>,
-    default: [{ name: '' }],
+    default: [{ id: '' }],
   })
   categories: Category[];
 
   @ApiProperty({
     type: Array<Institution>,
-    default: [{ name: '' }],
+    default: [{ id: '' }],
   })
   studies: Institution[];
 }

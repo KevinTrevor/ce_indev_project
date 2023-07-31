@@ -11,6 +11,7 @@ export class CreateServiceDetailDto {
 
   @ApiProperty({
     type: Array<Service>,
+    default: [{ id: '' }],
   })
   services: Service[];
 

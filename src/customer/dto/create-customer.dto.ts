@@ -44,11 +44,13 @@ export class CreateCustomerDto {
 
   @ApiProperty({
     type: Array<Package>,
+    default: [{ id: '' }],
   })
   packages: Package[];
 
   @ApiProperty({
     type: Array<Service>,
+    default: [{ id: '' }],
   })
   services: Service[];
 }

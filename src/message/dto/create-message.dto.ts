@@ -31,6 +31,7 @@ export class CreateMessageDto {
   @ApiProperty({
     type: Chat,
     required: true,
+    default: { id: '' },
   })
   chat: Chat;
 }
